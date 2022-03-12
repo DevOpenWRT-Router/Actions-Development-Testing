@@ -1,5 +1,7 @@
-name: Alert parent repository on push
-on: push
+name: Test Build (Short) (Linksys Devices)
+'on':
+  repository_dispatch: null
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,7 +14,7 @@ jobs:
         with:
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           repo: '@'
-          event_type: submodule_push
+          event_type: repository_dispatch
           message: |
             {
               "foo": "bar"
