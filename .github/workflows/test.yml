@@ -1,0 +1,19 @@
+name: Alert parent repository on push
+on: push
+
+jobs:
+  build:
+    name: Dispatch to `other-repo`
+    runs-on: ubuntu-latest
+    # Dispatcher workflow in submodule
+    steps:
+      - name: Dispatch submodule_push event
+        uses: mvasigh/dispatch-action@main
+        with:
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          repo: '@'
+          event_type: submodule_push
+          message: |
+            {
+              "foo": "bar"
+            }
